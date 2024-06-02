@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Daftar kontak</h1>
+      <div class="d-flex my-2">
+        <div>
+          <a href="/add-contact" class="btn btn-primary btn-md">
+            <i class="bi bi-plus-lg"></i> Tambahkan kontak baru</a
+          >
+        </div>
+        <div></div>
+      </div>
+      <% if (typeof msg !== 'undefined' && msg.length > 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Nomor Handphone</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (contacts.length === 0) { %>
+          <td colspan="4">
+            <div class="alert alert-danger" role="alert">
+              Contact table is empty.
+            </div>
+          </td>
+          <% } %> <% contacts.forEach(contact => { %>
+          <tr>
+            <th scope="row"><%= contact.id %></th>
+            <td><%= contact.name %></td>
+            <td><%= contact.phoneNumber %></td>
+            <td>
+              <a
+                href="/contact/<%= contact.id %>"
+                class="btn btn-success btn-sm"
+              >
+                <i class="bi bi-info-square"></i> Details</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
